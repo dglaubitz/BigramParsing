@@ -1,7 +1,7 @@
 # BigramParsing
 Demo web application demo that accepts a file upload, extracts all bigrams, and displays a list of them with a histogram of count data for each.
 
-Since this is a demo, the easiest way to run it would be directly from Visual Studio. 
+Since this is a demo, the easiest way to run it would be directly from Visual Studio. The solution file is in BigramParsing. The BigramParsingXUnit.UnitTests directory should be placed in the same directory that holds the BigramParsing directory.
 
 This application will take any kind of file as an upload, but it was designed to read plaintext files. Results can be interesting if non-plaintext files are used.
 
