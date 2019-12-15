@@ -1,0 +1,38 @@
+﻿@model BigramDataViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form method="post" enctype="multipart/form-data" action="/Home/Upload">
+    <div>
+        <a>Choose a text file from your device</a><br />
+        <input style="margin-bottom:10px" type="file" name="toBigram" />
+    </div>
+    <div>
+        <a>Upload that file to extract the bigrams from it</a><br />
+        <input type="submit" value="Upload" />
+        @if (ViewBag.error != null || ViewBag.badFile != null)
+        {
+            <div style="color:red">@ViewBag.error</div>
+            <div style="color:red">@ViewBag.badFile</div>
+        }else
+        {
+            <br /><br />
+        }
+    </div>
+    <div>
+        <br /><a>Warning: uploading anything other than a plaintext file may produce unexpected results</a>
+    </div>
+    <div style="white-space: nowrap;">
+        @if (Model != null)
+        {
+            @Html.TextArea("ValueText", @Model.ListBigramValues().ToString(), new { style = "width: 50px; line-height: 22px; text-align: right; white-space: nowrap", rows = @Model.BigramDictionary.Count * 3 + 3 });
+            @Html.TextArea("KeyText", @Model.ListBigramKeyAndVisual().ToString(), new { style = "width: 750px; line-height: 22px; text-align: left; white-space: nowrap", rows = @Model.BigramDictionary.Count * 3 + 3 });          
+        }
+        else
+        { 
+            @Html.TextArea("NoText", "", new { style = "width: 800px; ", rows = 15 });
+        }
+    </div>
+</form>
+
